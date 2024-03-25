@@ -1,16 +1,21 @@
 package com.winfred.viewmodelapp;
 
+import android.view.View;
+
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 public class MyViewModel extends ViewModel {
 
-    int counter = 0;
+    private MutableLiveData<Integer> counter = new MutableLiveData<>();
 
-    public void increaseCounter(){
-        counter++;
+    public void increaseCounter(View view){
+       int currentCounter = counter.getValue() !=null ? counter.getValue():0;
+
+       counter.setValue(currentCounter+1);
     }
 
-    public int getCounter() {
+    public MutableLiveData<Integer> getCounter() {
         return counter;
     }
 }

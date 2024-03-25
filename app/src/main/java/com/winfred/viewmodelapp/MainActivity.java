@@ -2,6 +2,7 @@ package com.winfred.viewmodelapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
@@ -25,15 +26,23 @@ public class MainActivity extends AppCompatActivity {
 
         viewModel = new ViewModelProvider(this).get(MyViewModel.class);
 
-        binding.btnInc.setOnClickListener(new View.OnClickListener() {
+//        binding.btnInc.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                viewModel.increaseCounter();
+//               // binding.tvCounter.setText(""+ viewModel.getCounter());
+//            }
+//        });
+
+        binding.setMyViewModel(viewModel);
+
+
+        //observing the live data
+        viewModel.getCounter().observe(this, new Observer<Integer>() {
             @Override
-            public void onClick(View v) {
-                viewModel.increaseCounter();
-                binding.tvCounter.setText(""+ viewModel.getCounter());
+            public void onChanged(Integer counter) {
+                binding.tvCounter.setText(""+counter);
             }
         });
-
-        binding.tvCounter.setText("" +viewModel.getCounter());
-
     }
 }

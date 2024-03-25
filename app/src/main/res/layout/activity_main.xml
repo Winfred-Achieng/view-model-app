@@ -6,6 +6,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     >
 
+    <data>
+        <variable
+            name="myViewModel"
+            type="com.winfred.viewmodelapp.MyViewModel" />
+    </data>
 
 
 
@@ -33,19 +38,20 @@
         android:layout_height="wrap_content"
         android:text="0"
         android:textSize="29sp"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="100dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvHeader" />
     <Button
+        android:onClick="@{myViewModel::increaseCounter}"
         android:id="@+id/btnInc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="150sp"
+        android:layout_marginTop="100dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:text="increment"/>
+        app:layout_constraintTop_toBottomOf="@id/tvCounter"
+        android:text="increment counter"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
